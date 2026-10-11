@@ -1,0 +1,552 @@
+/**
+ * Webcasata Content Filter -- admin design system.
+ * Scoped entirely under .wbcf-wrap so nothing here leaks onto other
+ * plugins' screens. Custom properties keep the palette/spacing in one
+ * place; everything below just consumes them.
+ */
+.wbcf-wrap {
+	--wbcf-accent: #2271b1;
+	--wbcf-accent-dark: #135e96;
+	--wbcf-accent-light: #f0f6fc;
+	--wbcf-ink: #1d2327;
+	--wbcf-muted: #646970;
+	--wbcf-border: #e2e2e6;
+	--wbcf-surface: #fff;
+	--wbcf-canvas: #f6f7fb;
+	--wbcf-radius: 8px;
+	--wbcf-radius-lg: 12px;
+	--wbcf-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+	--wbcf-shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+	--wbcf-shadow-lift: 0 10px 28px rgba(16, 24, 40, 0.12);
+	margin-right: 20px;
+}
+
+.wbcf-wrap * {
+	box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------------
+ * Page header
+ * ------------------------------------------------------------------- */
+
+.wbcf-wrap h1.wp-heading-inline {
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--wbcf-ink);
+}
+
+.wbcf-wrap .page-title-action {
+	border-radius: 999px;
+	border-color: var(--wbcf-accent);
+	color: var(--wbcf-accent);
+	font-weight: 600;
+	transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.wbcf-wrap .page-title-action:hover,
+.wbcf-wrap .page-title-action:focus {
+	background: var(--wbcf-accent);
+	color: #fff;
+	transform: translateY(-1px);
+	box-shadow: var(--wbcf-shadow-sm);
+}
+
+.wbcf-wrap hr.wp-header-end {
+	border-color: var(--wbcf-border);
+	margin-bottom: 20px;
+}
+
+.wbcf-wrap .notice {
+	border-radius: var(--wbcf-radius);
+	box-shadow: var(--wbcf-shadow-sm);
+}
+
+/* ---------------------------------------------------------------------
+ * Empty state
+ * ------------------------------------------------------------------- */
+
+.wbcf-wrap .wbcf-empty-state {
+	background: var(--wbcf-surface);
+	border: 1px dashed var(--wbcf-border);
+	border-radius: var(--wbcf-radius-lg);
+	padding: 56px 40px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.wbcf-empty-state::before {
+	content: "\f533";
+	font-family: dashicons;
+	display: block;
+	font-size: 40px;
+	width: 40px;
+	height: 40px;
+	line-height: 1;
+	margin: 0 auto 14px;
+	color: var(--wbcf-accent);
+	opacity: 0.85;
+}
+
+.wbcf-empty-state p {
+	font-size: 14px;
+	color: var(--wbcf-muted);
+	max-width: 480px;
+	margin: 0 auto 18px;
+}
+
+.wbcf-empty-state .button-primary {
+	border-radius: 999px;
+	padding: 4px 20px;
+}
+
+/* ---------------------------------------------------------------------
+ * Shortcode chips
+ * ------------------------------------------------------------------- */
+
+.wbcf-shortcode-inline {
+	background: var(--wbcf-accent-light);
+	color: var(--wbcf-accent-dark);
+	padding: 3px 8px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+.wbcf-shortcode-box {
+	font-family: Consolas, Monaco, monospace;
+	background: var(--wbcf-canvas);
+	border-radius: 6px;
+	width: 100%;
+}
+
+.wbcf-terms-list {
+	background: var(--wbcf-surface);
+	border: 1px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius);
+	padding: 12px;
+	max-height: 220px;
+	overflow-y: auto;
+	max-width: 420px;
+}
+
+.wbcf-term-checkbox {
+	display: block;
+	padding: 4px 0;
+}
+
+/* ---------------------------------------------------------------------
+ * Filters list table
+ * ------------------------------------------------------------------- */
+
+.wbcf-wrap .wp-list-table {
+	border: 1px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius-lg);
+	overflow: hidden;
+	box-shadow: var(--wbcf-shadow-sm);
+	border-spacing: 0;
+}
+
+.wbcf-wrap .wp-list-table thead th {
+	background: var(--wbcf-canvas);
+	color: var(--wbcf-ink);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.wbcf-wrap .wp-list-table tbody tr {
+	transition: background 0.12s ease;
+}
+
+.wbcf-wrap .wp-list-table tbody tr:hover {
+	background: var(--wbcf-accent-light);
+}
+
+.wbcf-wrap .wp-list-table td,
+.wbcf-wrap .wp-list-table th {
+	padding: 12px 14px;
+}
+
+.wbcf-wrap .wp-list-table .row-title,
+.wbcf-wrap .wp-list-table strong a {
+	font-weight: 600;
+}
+
+.wbcf-delete-link {
+	color: #b32d2e;
+}
+
+/* ---------------------------------------------------------------------
+ * "Upgrade to Pro" banner (dismiss controls live in class-wbcf-upgrade-notice.php)
+ * ------------------------------------------------------------------- */
+
+.wbcf-upgrade-banner {
+	background: linear-gradient(135deg, #1d2327, #2c3338);
+	color: #fff;
+	padding: 16px 20px;
+	border-radius: var(--wbcf-radius-lg);
+	margin: 16px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	box-shadow: var(--wbcf-shadow-md);
+}
+
+.wbcf-upgrade-banner a.button {
+	background: #f0b849;
+	border-color: #f0b849;
+	color: #1d2327;
+	font-weight: 600;
+	border-radius: 999px;
+}
+
+.wbcf-upgrade-banner-dismiss {
+	background: transparent;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 1;
+	padding: 4px 6px;
+	margin: 0;
+	opacity: 0.7;
+	border-radius: 4px;
+}
+
+.wbcf-upgrade-banner-dismiss:hover,
+.wbcf-upgrade-banner-dismiss:focus {
+	opacity: 1;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------------------------
+ * Filter builder (Add/Edit screen) -- two-column wizard
+ * ------------------------------------------------------------------- */
+
+.wbcf-builder {
+	display: flex;
+	gap: 24px;
+	margin-top: 20px;
+	align-items: flex-start;
+}
+
+.wbcf-builder__main {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.wbcf-builder__side {
+	flex: 0 0 300px;
+	position: sticky;
+	top: 40px;
+}
+
+.wbcf-step {
+	display: flex;
+	gap: 16px;
+	background: var(--wbcf-surface);
+	border: 1px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius-lg);
+	padding: 22px 24px;
+	margin-bottom: 16px;
+	box-shadow: var(--wbcf-shadow-sm);
+	transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.wbcf-step:hover {
+	box-shadow: var(--wbcf-shadow-md);
+	border-color: #d6d9dd;
+}
+
+.wbcf-step__num {
+	flex: 0 0 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--wbcf-accent), var(--wbcf-accent-dark));
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 13px;
+	box-shadow: 0 2px 6px rgba(34, 113, 177, 0.35);
+}
+
+.wbcf-step__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.wbcf-step__body h2 {
+	margin: 0 0 4px;
+	font-size: 15px;
+	color: var(--wbcf-ink);
+}
+
+.wbcf-step__body .description {
+	color: var(--wbcf-muted);
+}
+
+.wbcf-pt-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.wbcf-pt-card {
+	border: 2px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius);
+	padding: 16px 10px;
+	text-align: center;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	background: var(--wbcf-canvas);
+	transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.wbcf-pt-card:hover {
+	border-color: #c4c9ce;
+	transform: translateY(-1px);
+}
+
+.wbcf-pt-card input {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.wbcf-pt-card .dashicons {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	color: var(--wbcf-muted);
+}
+
+.wbcf-pt-card code {
+	font-size: 11px;
+	color: #888;
+	background: transparent;
+}
+
+.wbcf-pt-card.is-selected {
+	border-color: var(--wbcf-accent);
+	background: var(--wbcf-accent-light);
+}
+
+.wbcf-pt-card.is-selected .dashicons {
+	color: var(--wbcf-accent);
+}
+
+.wbcf-tax-list {
+	margin-top: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.wbcf-tax-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border: 1px solid var(--wbcf-border);
+	border-radius: 6px;
+	padding: 10px 12px;
+	transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.wbcf-tax-checkbox:hover {
+	border-color: #c4c9ce;
+	background: var(--wbcf-canvas);
+}
+
+.wbcf-tax-checkbox code {
+	margin-left: auto;
+	color: #999;
+	background: transparent;
+	font-size: 11px;
+}
+
+.wbcf-side-box {
+	background: var(--wbcf-surface);
+	border: 1px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius-lg);
+	padding: 18px;
+	margin-bottom: 16px;
+	box-shadow: var(--wbcf-shadow-sm);
+}
+
+.wbcf-side-box h3 {
+	margin-top: 0;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--wbcf-muted);
+}
+
+.wbcf-side-box .button-primary {
+	width: 100%;
+	justify-content: center;
+	display: inline-flex;
+	border-radius: 999px;
+	padding: 6px 0;
+}
+
+.wbcf-published-status {
+	color: var(--wbcf-accent);
+	font-size: 13px;
+	margin: 10px 0 0;
+}
+
+.wbcf-summary-list {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+.wbcf-summary-list li {
+	display: flex;
+	justify-content: space-between;
+	padding: 7px 0;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 13px;
+}
+
+.wbcf-summary-list li:last-child {
+	border-bottom: none;
+}
+
+.wbcf-settings-box {
+	max-width: 720px;
+}
+
+@media (max-width: 782px) {
+	.wbcf-builder {
+		flex-direction: column;
+	}
+	.wbcf-builder__side {
+		position: static;
+		width: 100%;
+	}
+	.wbcf-step {
+		flex-direction: column;
+	}
+}
+
+.wbcf-style-subhead {
+	margin: 24px 0 8px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #eee;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--wbcf-muted);
+}
+
+.wbcf-style-subhead:first-of-type {
+	margin-top: 4px;
+}
+
+.wbcf-step .form-table th {
+	width: 160px;
+}
+
+.wbcf-step .form-table,
+.wbcf-step .form-table td,
+.wbcf-step .form-table th {
+	border: none;
+}
+
+/* ---------------------------------------------------------------------
+ * Card Elements show/hide toggles (Display Options step)
+ * ------------------------------------------------------------------- */
+
+.wbcf-toggle-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.wbcf-toggle-card {
+	border: 1px solid var(--wbcf-border);
+	border-radius: var(--wbcf-radius);
+	padding: 12px 14px;
+	background: var(--wbcf-canvas);
+	display: flex !important;
+	align-items: center;
+	gap: 10px;
+	transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.wbcf-toggle-card:hover {
+	border-color: #c4c9ce;
+}
+
+.wbcf-toggle-card:has(.wbcf-toggle:checked) {
+	border-color: var(--wbcf-accent);
+	background: var(--wbcf-accent-light);
+}
+
+.wbcf-toggle-card span {
+	font-weight: 500;
+	color: var(--wbcf-ink);
+}
+
+.wbcf-toggle-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+/* Pure-CSS toggle switch: styled directly on the checkbox, no extra markup needed. */
+.wbcf-toggle {
+	appearance: none;
+	-webkit-appearance: none;
+	flex: 0 0 40px;
+	width: 40px;
+	height: 22px;
+	background: #d0d3d8;
+	border-radius: 999px;
+	position: relative;
+	cursor: pointer;
+	outline-offset: 2px;
+	margin: 0;
+	transition: background 0.2s ease;
+	vertical-align: middle;
+}
+
+.wbcf-toggle::before {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+	transition: transform 0.2s ease;
+}
+
+.wbcf-toggle:checked {
+	background: linear-gradient(135deg, var(--wbcf-accent), var(--wbcf-accent-dark));
+}
+
+.wbcf-toggle:checked::before {
+	transform: translateX(18px);
+}
+
+.wbcf-toggle:focus-visible {
+	box-shadow: 0 0 0 3px rgba(34, 113, 177, 0.3);
+}
